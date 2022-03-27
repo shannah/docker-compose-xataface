@@ -36,7 +36,7 @@ bash configure.sh
 // visit localhost
 ```
 
-Your LAMP stack is now ready!! You can access it via `http://localhost`. 
+Your Xataface application is now ready!! You can access it via `http://localhost`. 
 
 ##  Configuration and Usage
 
