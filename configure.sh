@@ -22,7 +22,8 @@ cat << EOF > www/admin/conf.db.ini.php
     driver=mysqli
 EOF
 mv www/admin/* www/
-mv www/admin/.* www/
+mv www/admin/.gitignore www/
+mv www/admin/.htaccess www/
 rm -r www/admin
 rm www/phpinfo.php
 rm www/test_db.php
