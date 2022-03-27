@@ -1,7 +1,6 @@
-#  LAMP stack built with Docker Compose
+#  Example Xataface App built with Docker Compose
 
-![Landing Page](https://user-images.githubusercontent.com/43859895/141092846-905eae39-0169-4fd7-911f-9ff32c48b7e8.png)
-
+Based on [SprintCube's docker-compose-lamp](https://github.com/sprintcube/docker-compose-lamp)
 
 A basic LAMP stack environment built using Docker Compose. It consists of the following:
 
@@ -26,14 +25,14 @@ As of now, we have several different PHP versions. Use appropriate php version a
  
 * Clone this repository on your local computer
 * configure .env as needed 
-* Run the `docker-compose up -d`.
+* Run the `bash configure.sh`.
 
 ```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
-cd docker-compose-lamp/
+git clone https://github.com/shannah/docker-compose-xataface.git
+cd docker-compose-xataface/
 cp sample.env .env
 // modify sample.env as needed
-docker-compose up -d
+bash configure.sh
 // visit localhost
 ```
 
@@ -49,7 +48,7 @@ This package comes with default configuration options. You can modify them by cr
 To make it easy, just copy the content from `sample.env` file and update the environment variable values as per your need.
 
 ### Configuration Variables
-There are following configuration variables available and you can customize them by overwritting in your own `.env` file.
+There are following configuration variables available and you can customize them by overwriting in your own `.env` file.
 
 ---
 #### PHP
