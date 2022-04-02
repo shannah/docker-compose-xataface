@@ -1,8 +1,8 @@
-#  Example Xataface App built with Docker Compose
+#  Xataface Docker Development Environment
 
 Based on [SprintCube's docker-compose-lamp](https://github.com/sprintcube/docker-compose-lamp)
 
-A basic LAMP stack environment built using Docker Compose. It consists of the following:
+A basic Xataface LAMP stack environment built using Docker Compose. It consists of the following:
 
 * PHP
 * Apache
@@ -20,6 +20,14 @@ As of now, we have several different PHP versions. Use appropriate php version a
 * 7.4.x
 * 8.0.x
 
+## Requirements
+
+1. Docker installed and running
+
+
+ ### Mac OS Warning
+
+Docker performance on Mac OS is really poor.  For developing Xataface applications on Mac, we I recommend the https://github.com/shannah/xampp-xataface[XAMPP development]. environment.
  
 ##  Installation
  
