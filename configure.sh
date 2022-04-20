@@ -2,11 +2,14 @@
 set -e
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd "$SCRIPTPATH"
+
 if [ ! -f ".env" ]; then
   echo "Please copy the sample.env to .env then run this command again."
   exit 1
 fi
 source .env
+
+chmod 0755 bin/start bin/stop
 
 docker-compose up -d
 if [ ! -d "www/admin" ]; then
@@ -28,6 +31,8 @@ rm -r www/admin
 rm www/phpinfo.php
 rm www/test_db.php
 rm www/test_db_pdo.php
+
+
 
 docker-compose down
 
