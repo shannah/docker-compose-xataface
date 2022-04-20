@@ -33,9 +33,15 @@ mv www/admin/* www/
 mv www/admin/.gitignore www/
 mv www/admin/.htaccess www/
 rm -r www/admin
-rm www/phpinfo.php
-rm www/test_db.php
-rm www/test_db_pdo.php
+if [ -f "www/phpinfo.php" ]; then
+  rm www/phpinfo.php
+fi
+if [ -f "www/test_db.php" ]; then
+  rm www/test_db.php
+fi
+if [ -f "www/test_db_pdo.php" ]; then
+  rm www/test_db_pdo.php
+fi
 set +x
 
 exit 0
