@@ -41,6 +41,7 @@ cd docker-compose-xataface/
 cp sample.env .env
 // modify sample.env as needed
 bash configure.sh
+docker-compose up -d
 // visit localhost
 ```
 
