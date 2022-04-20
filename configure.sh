@@ -29,6 +29,7 @@ rm www/phpinfo.php
 rm www/test_db.php
 rm www/test_db_pdo.php
 
+docker-compose down
 
 
 
