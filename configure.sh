@@ -14,7 +14,6 @@ chmod 0755 bin/start bin/stop
 if [ ! -d "www/admin" ]; then
   docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
 fi
-echo "Configuring database connection"
 cat << EOF > www/admin/conf.db.ini.php
 ;<?php exit;
 [_database]
@@ -24,7 +23,6 @@ cat << EOF > www/admin/conf.db.ini.php
     name = "$MYSQL_DATABASE"
     driver=mysqli
 EOF
-echo "Finished configuring database connection"
 
 
 mv www/admin/* www/
