@@ -38,5 +38,4 @@ rm www/test_db.php
 rm www/test_db_pdo.php
 set +x
 
-
-
+exit 0
