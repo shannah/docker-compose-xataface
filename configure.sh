@@ -13,8 +13,9 @@ chmod 0755 bin/start bin/stop
 
 docker-compose up -d
 if [ ! -d "www/admin" ]; then
+  test -t 1 && USE_TTY="-t"
   set -x
-  docker-compose exec webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
+  docker-compose exec ${USE_TTY} webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
   set +x
 fi
 echo "Configuring database connection"
