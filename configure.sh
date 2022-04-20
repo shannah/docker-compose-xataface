@@ -28,7 +28,7 @@ cat << EOF > www/admin/conf.db.ini.php
 EOF
 echo "Finished configuring database connection"
 
-set -x
+
 mv www/admin/* www/
 mv www/admin/.gitignore www/
 mv www/admin/.htaccess www/
@@ -42,6 +42,3 @@ fi
 if [ -f "www/test_db_pdo.php" ]; then
   rm www/test_db_pdo.php
 fi
-set +x
-
-exit 0
