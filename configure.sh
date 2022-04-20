@@ -12,9 +12,7 @@ source .env
 chmod 0755 bin/start bin/stop
 
 if [ ! -d "www/admin" ]; then
-  set -x
   docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
-  set +x
 fi
 echo "Configuring database connection"
 cat << EOF > www/admin/conf.db.ini.php
