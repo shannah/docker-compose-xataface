@@ -12,7 +12,10 @@ source .env
 chmod 0755 bin/start bin/stop
 
 if [ ! -d "www/admin" ]; then
-  docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
+  # IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with 
+  # the remainder of the bash script
+  # See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
+  echo "" | docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
 fi
 cat << EOF > www/admin/conf.db.ini.php
 ;<?php exit;
@@ -26,9 +29,15 @@ EOF
 
 
 mv www/admin/* www/
-mv www/admin/.gitignore www/
-mv www/admin/.htaccess www/
-rm -r www/admin
+if [ -f "www/admin/.gitignore" ]; then
+  mv www/admin/.gitignore www/
+fi
+if [ -f "www/admin/.htaccess" ]; then
+  mv www/admin/.htaccess www/
+fi
+if [ -d "www/admin" ]; then
+  rm -r www/admin
+fi
 if [ -f "www/phpinfo.php" ]; then
   rm www/phpinfo.php
 fi
