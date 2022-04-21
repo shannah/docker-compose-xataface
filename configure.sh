@@ -9,7 +9,7 @@ if [ ! -f ".env" ]; then
 fi
 source .env
 
-chmod 0755 bin/start bin/stop
+chmod 0755 bin/start bin/stop bin/phpmyadmin
 
 if [ ! -d "www/admin" ]; then
   # IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with 
