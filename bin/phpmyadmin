@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+cd "$SCRIPTPATH"/..
+source .env
+
+URL="http://localhost:${HOST_MACHINE_PMA_PORT}"
+if [ ! -z $(command -v open) ]; then
+  open "$URL"
+elif [ ! -z $(command -v xdg-open) ]; then
+  xdg-open "$URL"
+elif [ ! -z $(command -v start) ]; then
+  start "$URL"
+elif [ ! -z $(command -v python3) ]; then
+  python3 -m webbrowser "$URL"
+fi
