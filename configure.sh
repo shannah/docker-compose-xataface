@@ -17,19 +17,19 @@ if [ ! -d "www/admin" ]; then
   # the remainder of the bash script
   # See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
   set +e
-  echo "" | docker-compose exec webserver composer -n create-project "$COMPOSER_TEMPLATE_NAME" "admin"
+  echo "" | docker-compose exec webserver cd /var/www && rm -rf html && composer -n create-project "$COMPOSER_TEMPLATE_NAME" "html"
   set -e
 fi
-if [ -f "$SCRIPTPATH/www/admin/configure.env" ]; then
-    source "$SCRIPTPATH/www/admin/configure.env"
+if [ -f "$SCRIPTPATH/www/configure.env" ]; then
+    source "$SCRIPTPATH/www/configure.env"
 fi
 
 XATAFACE_APP_ROOT=${XATAFACE_APP_ROOT:-"."}
-CONF_PATH="www/admin/conf.db.ini.php"
+CONF_PATH="www/conf.db.ini.php"
 ls -la www/admin
 ls -la www/admin/$XATAFACE_APP_ROOT
 if [ "$XATAFACE_APP_ROOT" != "." ]; then
-  CONF_PATH="www/admin/$XATAFACE_APP_ROOT/conf.db.ini.php"
+  CONF_PATH="www/$XATAFACE_APP_ROOT/conf.db.ini.php"
 fi
 
 cat << EOF > "$CONF_PATH"
@@ -42,17 +42,6 @@ cat << EOF > "$CONF_PATH"
     driver=mysqli
 EOF
 
-
-mv www/admin/* www/
-if [ -f "www/admin/.gitignore" ]; then
-  mv www/admin/.gitignore www/
-fi
-if [ -f "www/admin/.htaccess" ]; then
-  mv www/admin/.htaccess www/
-fi
-if [ -d "www/admin" ]; then
-  rm -r www/admin
-fi
 if [ -f "www/phpinfo.php" ]; then
   rm www/phpinfo.php
 fi
