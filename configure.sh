@@ -22,7 +22,12 @@ if [ -f "$SCRIPTPATH/www/admin/configure.env" ]; then
 fi
 
 XATAFACE_APP_ROOT=${XATAFACE_APP_ROOT:-"."}
-cat << EOF > www/admin/$XATAFACE_APP_ROOT/conf.db.ini.php
+CONF_PATH="www/admin/conf.db.ini.php"
+if [ "$XATAFACE_APP_ROOT" != "." ]; then
+  CONF_PATH="www/admin/$XATAFACE_APP_ROOT/conf.db.ini.php"
+fi
+
+cat << EOF > "$CONF_PATH"
 ;<?php exit;
 [_database]
     host = "database"
