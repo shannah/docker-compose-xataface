@@ -13,7 +13,7 @@ RUN printf "deb http://archive.debian.org/debian/ jessie main\n" > /etc/apt/sour
 RUN apt-get -y --allow-unauthenticated update && apt-get upgrade -y --allow-unauthenticated
 
 # Install tools && libraries
-RUN apt-get -y --allow-unauthenticated install --fix-missing apt-utils nano wget dialog \
+RUN apt-get -y --allow-unauthenticated install --fix-missing apt-utils nano wget dialog unzip \
     build-essential git curl libcurl3 libcurl3-dev zip \
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client \
     zlib1g-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev \

@@ -12,7 +12,7 @@ RUN apt-get -y update --fix-missing --no-install-recommends
 RUN apt-get -y upgrade
 
 # Install useful tools
-RUN apt-get -yq install apt-utils nano wget dialog
+RUN apt-get -yq install apt-utils nano wget dialog unzip
 
 # Install important libraries
 RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl3 libcurl3-dev zip openssl

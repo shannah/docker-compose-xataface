@@ -14,7 +14,7 @@ RUN apt-get -y update --fix-missing && \
 
 # Install useful tools and install important libaries
 RUN apt-get -y update && \
-    apt-get -y --no-install-recommends install nano wget \
+    apt-get -y --no-install-recommends install nano wget unzip \
 dialog \
 libsqlite3-dev \
 libsqlite3-0 && \

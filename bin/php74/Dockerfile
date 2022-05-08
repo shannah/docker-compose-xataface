@@ -15,7 +15,7 @@ RUN apt-get -y update --fix-missing && \
 # Install useful tools and install important libaries
 RUN apt-get -y update && \
     apt-get -y --no-install-recommends install nano wget \
-dialog \
+dialog unzip \
 libsqlite3-dev \
 libsqlite3-0 && \
     apt-get -y --no-install-recommends install default-mysql-client \
