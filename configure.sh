@@ -23,6 +23,8 @@ fi
 
 XATAFACE_APP_ROOT=${XATAFACE_APP_ROOT:-"."}
 CONF_PATH="www/admin/conf.db.ini.php"
+ls -la www/admin
+ls -la www/admin/$XATAFACE_APP_ROOT
 if [ "$XATAFACE_APP_ROOT" != "." ]; then
   CONF_PATH="www/admin/$XATAFACE_APP_ROOT/conf.db.ini.php"
 fi
