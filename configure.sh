@@ -17,7 +17,12 @@ if [ ! -d "www/admin" ]; then
   # See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
   echo "" | docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
 fi
-cat << EOF > www/admin/conf.db.ini.php
+if [ -f "$SCRIPTPATH/www/admin/configure.env" ]; then
+    source "$SCRIPTPATH/www/admin/configure.env"
+fi
+
+XATAFACE_APP_ROOT=${XATAFACE_APP_ROOT:-"."}
+cat << EOF > www/admin/XATAFACE_APP_ROOT/conf.db.ini.php
 ;<?php exit;
 [_database]
     host = "database"
