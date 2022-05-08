@@ -15,7 +15,7 @@ if [ ! -d "www/admin" ]; then
   # IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with 
   # the remainder of the bash script
   # See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
-  echo "" | docker-compose run  webserver composer create-project "$COMPOSER_TEMPLATE_NAME" "admin"
+  echo "" | docker-compose run  webserver composer -n create-project "$COMPOSER_TEMPLATE_NAME" "admin"
 fi
 if [ -f "$SCRIPTPATH/www/admin/configure.env" ]; then
     source "$SCRIPTPATH/www/admin/configure.env"
