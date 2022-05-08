@@ -12,14 +12,14 @@ source .env
 chmod 0755 bin/start bin/stop bin/phpmyadmin
 
 docker-compose up -d
-if [ ! -d "www/admin" ]; then
-  # IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with 
-  # the remainder of the bash script
-  # See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
-  set +e
-  echo "" | docker-compose exec webserver bash -c "cd /var/www && rm -rf html/* && composer -n create-project $COMPOSER_TEMPLATE_NAME tmp &&  mv tmp/{.[!.],}* html/"
-  set -e
-fi
+
+# IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with
+# the remainder of the bash script
+# See https://www.reddit.com/r/bash/comments/u8o8y9/comment/i5m9q9g/?utm_source=share&utm_medium=web2x&context=3
+set +e
+echo "" | docker-compose exec webserver bash -c "cd /var/www && rm -rf html/* && composer -n create-project $COMPOSER_TEMPLATE_NAME tmp &&  mv tmp/{.[!.],}* html/"
+set -e
+
 if [ -f "$SCRIPTPATH/www/configure.env" ]; then
     source "$SCRIPTPATH/www/configure.env"
 fi
