@@ -11,7 +11,7 @@ source .env
 
 chmod 0755 bin/start bin/stop bin/phpmyadmin
 
-docker-compose up -d
+echo "" | docker-compose up -d
 if [ ! -d "www/admin" ]; then
   # IMPORTANT: Need to pipe into docker-compose run so it doesn't eat the stdin with 
   # the remainder of the bash script
